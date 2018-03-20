@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router({mergeParams:true})
 const LeetProblem = require('../models/leetproblem')
 const middleware = require('../middleware')
-//const spread = require('./spread')
 
 //Search for all problems
 router.get("/", 
