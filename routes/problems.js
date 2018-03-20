@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router({mergeParams:true})
 const LeetProblem = require('../models/leetproblem')
 const middleware = require('../middleware')
-const spread = require('./spread')
+//const spread = require('./spread')
 
 //Search for all problems
 router.get("/", 
@@ -11,7 +11,7 @@ router.get("/",
         let data = []
         problems.sort((a,b)=>a.id - b.id)
         for (let problem of problems) {
-            let obj = spread(problem._doc)
+            let obj = {...problem._doc}
             obj.finished = (!req.user)? false: problem.finished.indexOf(req.user._id) > -1
             data.push(obj)
         }
@@ -29,7 +29,7 @@ router.get("/company/:id",
         problems.sort((a, b) => b.companies[req.params.id].frequency - a.companies[req.params.id].frequency)
         let data =[]
         for (let problem of problems) {
-            let obj = spread(problem._doc)
+            let obj = {...problem._doc}
             obj.finished = (!req.user)? false: problem.finished.indexOf(req.user._id) > -1
             data.push(obj)
         }
@@ -44,7 +44,7 @@ router.get("/search",
         let data = []
         probelms.sort((a,b)=>a.id - b.id)
         for (let problem of probelms) {
-            let obj = spread(problem._doc)
+            let obj = {...problem._doc}
             obj.finished = problem.finished.includes(req.user._id)
             data.push(obj)
         }

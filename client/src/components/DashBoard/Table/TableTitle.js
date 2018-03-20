@@ -1,5 +1,5 @@
 import React from 'react'
-import * as PROBLEM from '../../../../actions/problemSort'
+import * as PROBLEM from '../../../actions/problemSort'
 const TableTitle = (props) => {
   return (
     <thead>

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Table } from 'react-bootstrap'
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import TableTitle from './Table/TabContent/TableTitle'
-import TableContent from './Table/TabContent/TableContent'
+import TableTitle from './Table/TableTitle'
+import TableContent from './Table/TableContent'
 import FilterBar from './FilterBar/FilterBar'
 import './DashBoard.css'
 
