@@ -12,6 +12,7 @@ Users can sign in with Google account and manage their solutions.
 - Express
 - Passport
 - Passport Google OAuth2
+- Google Code Prettify
 
 # Some Demos
 
