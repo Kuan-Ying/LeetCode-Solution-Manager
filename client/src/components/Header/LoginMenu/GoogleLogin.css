@@ -1,0 +1,26 @@
+
+.signIn {
+  background: url('/assets/btnGoogle/normal.png') center no-repeat;
+  background-size: cover;
+  width: 171px;
+  height: 40px;
+}
+ 
+.signIn:hover {
+  background: url('/assets/btnGoogle/focus.png') center no-repeat;
+  background-size: cover;
+  width: 171px;
+  height: 40px;
+}
+
+.signIn:active {
+  background: url("/assets/btnGoogle/pressed.png") center no-repeat;
+  background-size: cover;
+  width: 171px;
+  height: 40px;
+}
+
+
+.dropdown-menu>li>a {
+  padding: 5px 10px;
+}

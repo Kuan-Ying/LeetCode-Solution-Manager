@@ -1,0 +1,11 @@
+/*! Color themes for Google Code Prettify | MIT License | github.com/jmblog/color-themes-for-google-code-prettify */
+.prettyprint {
+  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+  border: none !important;
+}
+
+.prettyprint ol.linenums > li { 
+  list-style-type: decimal; 
+  color: grey;
+  background: white;
+}

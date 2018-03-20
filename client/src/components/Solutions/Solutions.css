@@ -1,0 +1,11 @@
+#content{
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 1em;
+}
+
+pre {
+  background-color: white;
+  border: 0;
+}
