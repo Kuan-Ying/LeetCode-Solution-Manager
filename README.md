@@ -1,5 +1,5 @@
 # Introduction
-This is a demostration of MERN stack web application for LeetCode solution management.
+This is a demostration of a MERN stack web application for LeetCode solution management.
 Users can sign in with Google account and manage their solutions.
 [Live Demo](https://infinite-meadow-25392.herokuapp.com/)
 
@@ -7,6 +7,7 @@ Users can sign in with Google account and manage their solutions.
 - React
 - React-router
 - Redux
+- React-Bootstrap
 - Node.js
 - Express
 - Passport
@@ -16,11 +17,11 @@ Users can sign in with Google account and manage their solutions.
 
 ## Post a new solution
 
-![Imgur](https://i.imgur.com/oKyCTId.gif)
+<img src="https://i.imgur.com/oKyCTId.gif" width="800">
 
 ## Add code to an existing solution
 
-![Imgur](https://i.imgur.com/CaJvfwD.gif)
+<img src="https://i.imgur.com/CaJvfwD.gif" width="800">
 
 # Getting Started
 ## Installing packages
@@ -61,7 +62,7 @@ See the links below:
 https://support.google.com/cloud/answer/6158849?hl=en
 
 Then setting up authorized JavaScript origins and redirect URIs. 
-<img src="https://i.imgur.com/EBQnpv7.png" width="600">
+<img src="https://i.imgur.com/EBQnpv7.png" width="700">
 
 ## About Seeding LeetCode Probems to MongoDB
 This project provides sample data of LeetCode problems in /seedDB/seed.js.
