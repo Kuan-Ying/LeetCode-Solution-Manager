@@ -22,23 +22,58 @@ Users can sign in with Google account and manage their solutions.
 
 ![Imgur](https://i.imgur.com/CaJvfwD.gif)
 
-# Installation
-First clone this repository.
-```
-git clone
-```
-Then, install the packages.
+# Getting Started
+## Installing packages
+Install packages at the root directory and client directory.
 ```
 npm install
 ```
-## About Google OAuth2
+
+## Execution
+Run server locally:
+```
+npm run server
+```
+Run client locally:
+```
+npm run client
+```
+Run both server and client:
+```
+npm run dev
+```
+
+## Setting dev.js in config directory
+You need to create a dev.js in Config directory when process.env.NODE_ENV !== 'production'.
+```
+module.exports = {
+  mongoURI: "", // your mongoDB URI
+  cookieKey: "", // the cookie key you want
+  googleClientID: "", // your google client id
+  googleClientSecret: ""// your client secret
+}
+```
+
+## Applying for Google OAuth2 client ID
 Since this project uses passport and Google's strategy to login,
 you need to setting up an OAuth 2.0 client ID and client Secret.
 See the links below:
 https://support.google.com/cloud/answer/6158849?hl=en
 
+Then setting up authorized JavaScript origins and redirect URIs. 
+<img src="https://i.imgur.com/EBQnpv7.png" width="600">
+
 ## About Seeding LeetCode Probems to MongoDB
-Currently I use python to parse LeetCode problems.
+This project provides sample data of LeetCode problems in /seedDB/seed.js.
+To seed the sample data, require /seedDB/seed.js:
+```
+const seedDB = require('./seedDB/seed.js')
+```
+and run seedDB after mongoose.connect:
+```
+seedDB()
+```
+You can seed your own LeetCode problems into MongoDB by following the schema in /models/leetProblem.js.
 
 
 # To-do list
