@@ -13,12 +13,17 @@ Users can sign in with Google account and manage their solutions.
 - Passport
 - Passport Google OAuth2
 - Google Code Prettify
+- MathJax
 
 # Some Demos
 
 ## Post a new solution
 
 <img src="https://i.imgur.com/oKyCTId.gif" width="800">
+
+In description field, MathJax is used so Tex and LaTex expressions are supported.
+
+<img src="https://i.imgur.com/Oft7Hem.gif" width="800">
 
 ## Add code to an existing solution
 
