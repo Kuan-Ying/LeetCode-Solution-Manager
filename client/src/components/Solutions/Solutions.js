@@ -9,8 +9,8 @@ import { connect } from 'react-redux'
 import * as actions from '../../actions'
 
 class Solutions extends Component {
-  componentDidMount() {
-    this.props.fetchSolutions(this.props.match.params.id)
+  async componentDidMount() {
+    await this.props.fetchSolutions(this.props.match.params.id)
   }
 
   render() {
