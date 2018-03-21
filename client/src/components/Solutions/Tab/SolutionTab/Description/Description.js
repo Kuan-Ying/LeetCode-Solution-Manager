@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { Button, FormGroup, FormControl, Panel } from 'react-bootstrap'
 import './Description.css'
 import { connect } from 'react-redux'
-import * as actions from '../../../../actions'
+import * as actions from '../../../../../actions'
 
 class Description extends Component {
   state = {

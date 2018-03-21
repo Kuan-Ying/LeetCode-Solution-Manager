@@ -17,7 +17,7 @@ const Content = (props) => {
           }
           matched = matchOne && matched
         }
-        if (!matched) return 
+        if (!matched) return null 
       }
 
       return <TableRow key = {problem._id} 

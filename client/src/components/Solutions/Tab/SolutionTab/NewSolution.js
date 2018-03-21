@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Panel, FormControl, FormGroup, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import * as actions from '../../../actions'
+import * as actions from '../../../../actions'
 
 class NewSolution extends Component {
   state = {

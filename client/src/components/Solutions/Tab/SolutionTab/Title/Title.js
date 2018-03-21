@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, FormGroup, FormControl, Panel, Glyphicon } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import * as actions from '../../../../actions'
+import * as actions from '../../../../../actions'
 
 class Title extends Component {
   state = {
