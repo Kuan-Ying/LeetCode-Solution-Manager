@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import { Button, FormGroup, FormControl, Panel } from 'react-bootstrap'
 import './Description.css'
 import { connect } from 'react-redux'
@@ -24,10 +25,20 @@ class Description extends Component {
     this.setState({edit:false})
   }
 
+  componentDidMount () {
+    const MathJax = window.MathJax
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub, ReactDOM.findDOMNode(this)]);
+  }
+
+  componentDidUpdate () {
+    const MathJax = window.MathJax
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub, ReactDOM.findDOMNode(this)]);
+  }
+
   render() {
     let content = <p id="description" 
               onClick={this.editHandler}>{this.state.content}</p>
-    
+
     if (this.state.edit) {
       content = (
         <div>
