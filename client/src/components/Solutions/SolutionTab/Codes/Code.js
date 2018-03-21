@@ -92,7 +92,7 @@ class Code extends Component {
       ) 
     } else {
       return (
-        <pre className="prettyprint linenums" onClick={this.editHandler}>
+        <pre className="prettyprint linenums" onDoubleClick={this.editHandler}>
           <span dangerouslySetInnerHTML={{ __html: this.state.content}} />
         </pre>
       )

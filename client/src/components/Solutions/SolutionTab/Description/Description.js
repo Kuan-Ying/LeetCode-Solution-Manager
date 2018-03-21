@@ -37,7 +37,7 @@ class Description extends Component {
 
   render() {
     let content = <p id="description" 
-              onClick={this.editHandler}>{this.state.content}</p>
+              onDoubleClick={this.editHandler}>{this.state.content}</p>
 
     if (this.state.edit) {
       content = (

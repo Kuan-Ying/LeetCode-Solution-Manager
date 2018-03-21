@@ -36,7 +36,7 @@ class Title extends Component {
                           onClick={this.deleteHandler}>
                             <Glyphicon glyph="trash" />
                         </Button>
-                        <h2 onClick={this.editHandler}>{this.state.content}</h2>
+                        <h2 onDoubleClick={this.editHandler}>{this.state.content}</h2>
                   </Panel.Heading>
                   
     if (this.state.edit) {
