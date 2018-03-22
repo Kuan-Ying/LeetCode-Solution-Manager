@@ -4,6 +4,7 @@ import { Button, FormGroup, FormControl, Panel } from 'react-bootstrap'
 import './Description.css'
 import { connect } from 'react-redux'
 import * as actions from '../../../../../actions'
+import Linkify from 'react-linkify'
 
 class Description extends Component {
   state = {
@@ -66,7 +67,7 @@ class Description extends Component {
           <Panel.Title toggle>Description</Panel.Title>
         </Panel.Heading>
         <Panel.Body collapsible>
-          {content}
+          <Linkify>{content}</Linkify>
         </Panel.Body>
       </Panel>
     )
