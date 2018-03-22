@@ -4,16 +4,13 @@ Users can sign in with Google account and manage their solutions.
 [Live Demo](https://infinite-meadow-25392.herokuapp.com/)
 
 # Featuring
-- React
-- React-router
-- Redux
+### Client Side
+- React, React-router, Redux
+- Google Code Prettify, MathJax, react-linkify
 - React-Bootstrap
-- Node.js
-- Express
-- Passport
-- Passport Google OAuth2
-- Google Code Prettify
-- MathJax
+### Server Side
+- Express, Passport, Passport Google OAuth2
+
 
 # Some Demos
 
