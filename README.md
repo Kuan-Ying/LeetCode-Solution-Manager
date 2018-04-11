@@ -82,9 +82,9 @@ You can seed your own LeetCode problems into MongoDB by following the schema in 
 
 # To-do list
  - Automatically update new LeetCode problems on the server side. 
- - Sign in with GitHub account
- - Save solutions and codes in users' GitHub
+ - Markdown editor at solution editing page.
+ - Support tags and full-text search.
+ - Save solutions and codes in users' GitHub.
  - Support image links and pdf links in the solution page.
- - Support searching of titles, tags and contents at the problemset page.
  - Support user-defined tags and searching.
  
