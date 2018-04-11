@@ -64,6 +64,7 @@ class DashBoard extends Component {
         } else if (!isNaN(value)) {
           filters.set("id", value)
         } else {
+          if (filters.has("id")) filters.delete("id")
           filters.set("title", value.split(' ').filter(v => v !== ""))
           filters.set("tags",value.split(' ').filter(v => v !== ""))
         }
