@@ -5,13 +5,14 @@ import * as actions from '../../actions';
 import TableTitle from './Table/TableTitle'
 import TableContent from './Table/TableContent'
 import FilterBar from './FilterBar/FilterBar'
-import problemSort from './problemSort'
+import propertySort from './propertySort'
+import relevanceSort from './relavanceSort'
 import './DashBoard.css'
 
 class DashBoard extends Component {
   state = {
     cursor: null,
-    reverse: false,
+    reverse: true,
     filters: new Map(),
     titleFilter: ""
   }
@@ -74,9 +75,14 @@ class DashBoard extends Component {
 
   renderContent = () => {
     const filters = this.state.filters
-    const problems = this.props.problems
-                        .filter(problem => tagFilter(problem, filters))
-    if (this.state.cursor) problemSort(problems, this.state.cursor, this.state.reverse)
+    let problems = this.props.problems
+    if (filters.size !== 0) {
+      problems = relevanceSort(problems, filters)
+    }
+  
+    if (this.state.cursor !== null) {
+      problems = propertySort(problems, this.state.cursor, this.state.reverse)
+    }
     return <TableContent problems = {problems} 
                         finished = {this.finishHandler}
                         sendStatics = {this.statHandler}/>
@@ -98,21 +104,6 @@ class DashBoard extends Component {
 
 function mapStateToProps({problems}){
   return {problems}
-}
-
-const tagFilter = (problem, filters) => {
-  if (filters.size === 0) return true
-  let match = [...filters.entries()].reduce(
-      (total, [key, value], index) =>  {
-        if (!Array.isArray(value)) return total && value == problem[key]
-        if (!Array.isArray(problem[key])) {
-          return total && ([...value].some(
-            v => problem[key].toLowerCase().includes(v.toLowerCase())
-          ))  
-        }
-        return total
-      }, true)
-  return match
 }
 
 export default connect(mapStateToProps, actions)(DashBoard)

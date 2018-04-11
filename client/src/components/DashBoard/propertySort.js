@@ -1,5 +1,5 @@
 const idCompare = (a,b, reverse) => {
-  return (reverse)? a.id - b.id:b.id - a.id
+  return (reverse)? b.id - a.id: a.id - b.id
 }
 
 const titleCompare = (a, b, reverse) => {
@@ -40,7 +40,7 @@ export const DIFFICULTY = 3
 export const LIKES = 4
 export const DISLIKES = 5
 
-export default function sort(problems, pos, reverse) {
+export default function propertySort(problems, pos, reverse) {
   switch (pos) {
     case ID:
       return  problems.sort((a, b) => idCompare(a, b, reverse))
