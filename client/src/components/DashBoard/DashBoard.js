@@ -79,7 +79,6 @@ class DashBoard extends Component {
     if (filters.size !== 0) {
       problems = relevanceSort(problems, filters)
     }
-  
     if (this.state.cursor !== null) {
       problems = propertySort(problems, this.state.cursor, this.state.reverse)
     }

@@ -20,7 +20,7 @@ export default function relevanceSort(problems, filters){
     const relavanceReducer = (total, [key, value]) => {
       const singleKeyReducer = (total, v) => {
         if (!Array.isArray(problem[key])) { //title case.
-          let words = problem[key].toLowerCase().split(" ")
+          let words = problem[key].toString().toLowerCase().split(" ")
           let score = words.reduce((count, word) => count + (word.includes(v.toLowerCase())? 1: 0) , 0)
           return total + score
         }
