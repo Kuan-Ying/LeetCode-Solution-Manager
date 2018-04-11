@@ -12,7 +12,7 @@ async function seedDB(){
     problems.sort((a, b)=> a.id - b.id)
     await LeetProblem.remove({}).catch(err => console.log(err))
     for (let problem of problems) {
-        const obj = {...problem, tags:[], companies:{},finished: []}
+        const obj = {...problem, companies:{},finished: []}
         await LeetProblem.create(problem).catch(err => console.log(err))
         console.log(problem.id + " has succesfully added to db")
     }   

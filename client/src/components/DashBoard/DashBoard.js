@@ -5,19 +5,19 @@ import * as actions from '../../actions';
 import TableTitle from './Table/TableTitle'
 import TableContent from './Table/TableContent'
 import FilterBar from './FilterBar/FilterBar'
+import problemSort from './problemSort'
 import './DashBoard.css'
 
 class DashBoard extends Component {
   state = {
-    cursor: 0,
+    cursor: null,
     reverse: false,
-    filters:[],
+    filters: new Map(),
     titleFilter: ""
   }
 
   sortTableHandler = (pos) => {
     const reverse = pos === this.state.cursor && !this.state.reverse
-    this.props.sortData(this.props.problems, pos, reverse)
     this.setState({cursor: pos, reverse: reverse})
   }
 
@@ -26,28 +26,60 @@ class DashBoard extends Component {
   }
 
   filterHandler = (attr, value)=> {
-    let filters = this.state.filters
-    let added = false
-    filters = filters.map((filter)=>{
-      if (filter[0] === attr) {
-        added = true
-        let found = false
-        filter[1] = filter[1].filter(val=> {
-          if (val===value) found = true
-          return val!==value
-        })
-        if (!found) filter[1].push(value)
-      }
-      return filter
-    })
-    if (!added) filters.push([attr,[value]])
-    this.setState({filters:filters})
+    const filters = this.state.filters
+    switch (attr) {
+      case "difficulty":
+        if (filters.has("difficulty")) {
+          if (filters.get(attr).includes(value)) {
+            filters.set(attr, filters.get(attr).filter(item => item !== value))
+            if (filters.get(attr).length === 0) {
+              filters.delete(attr)
+            }
+          } else {
+            filters.get(attr).push(value)
+          }
+        } else {
+          filters.set(attr,[value])
+        }
+        break
+      case "finished":
+        if (filters.has('finished')) {
+          filters.delete('finished')
+        } else {
+          filters.set('finished', true)
+        }
+        break
+      case "isPremium":
+        if (filters.has("isPremium")) {
+          filters.delete("isPremium")
+        } else {
+          filters.set("isPremium", false)
+        }
+        break
+      case "tags":
+        if (value === "") {
+          if (filters.has("title")) filters.delete("title")
+          if (filters.has("id")) filters.delete("id")
+          filters.delete("tags")
+        } else if (!isNaN(value)) {
+          filters.set("id", value)
+        } else {
+          filters.set("title", value.split(' ').filter(v => v !== ""))
+          filters.set("tags",value.split(' ').filter(v => v !== ""))
+        }
+    }
+    this.setState({filters: filters})
   }
 
-
-  searchHandler = (value) => {
+  renderContent = () => {
+    const filters = this.state.filters
+    const problems = this.props.problems
+                        .filter(problem => tagFilter(problem, filters))
+    if (this.state.cursor) problemSort(problems, this.state.cursor, this.state.reverse)
+    return <TableContent problems = {problems} 
+                        finished = {this.finishHandler}
+                        sendStatics = {this.statHandler}/>
   }
-
 
   render(){
     return (
@@ -56,10 +88,7 @@ class DashBoard extends Component {
                  search = {this.searchHandler}/>
         <Table striped condensed hover>
           <TableTitle clicked={this.sortTableHandler}/>
-          <TableContent problems = {this.props.problems} 
-                        finished = {this.finishHandler}
-                        filters = {this.state.filters}
-                        sendStatics = {this.statHandler}/>
+          {this.renderContent()}
         </Table>
       </div>
     )
@@ -68,6 +97,21 @@ class DashBoard extends Component {
 
 function mapStateToProps({problems}){
   return {problems}
+}
+
+const tagFilter = (problem, filters) => {
+  if (filters.size === 0) return true
+  let match = [...filters.entries()].reduce(
+      (total, [key, value], index) =>  {
+        if (!Array.isArray(value)) return total && value == problem[key]
+        if (!Array.isArray(problem[key])) {
+          return total && ([...value].some(
+            v => problem[key].toLowerCase().includes(v.toLowerCase())
+          ))  
+        }
+        return total
+      }, true)
+  return match
 }
 
 export default connect(mapStateToProps, actions)(DashBoard)

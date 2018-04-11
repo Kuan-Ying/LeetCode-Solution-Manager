@@ -1,6 +1,5 @@
 import axios from 'axios';
 import * as actionType from './types';
-import problemSort from './problemSort'
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user')
@@ -35,11 +34,6 @@ export const putFinished = id => async dispatch => {
   await axios.post("/api/problems/finish/"+ id + "/?_method=PUT")
       .catch(err => postState = err)
   dispatch({type:null, payload: postState})
-}
-
-export const sortData = (problems, pos, reverse) => async dispatch => {
-  problemSort(problems, pos, reverse)
-  dispatch({type:actionType.FETCH_DATA, payload: problems})
 }
 
 export const fetchSolutions = id => async dispatch => {
@@ -94,7 +88,6 @@ export const putCode = (solutionId, codeId, code) => async dispatch => {
 export const deleteCode = (solutionId, codeId) => async dispatch => {
   let postState = true
   const url = '/api/solutions/'+ solutionId + '/codes/' + codeId + "?_method=DELETE"
-  console.log(url)
   await axios.post(url).catch(err=> postState = err)
   dispatch({type:null, payload: postState})
 }
