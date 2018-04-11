@@ -15,7 +15,8 @@ const tagFilter = (problem, filters) => {
 export default function relevanceSort(problems, filters){
   problems = problems.filter(problem => tagFilter(problem, filters))
   const keywords = ([...filters.entries()]).filter(([key, value]) => value.length > 1)
-  if (keywords.length === 0) return problems
+  if (keywords.length === 0 || (keywords.length === 1 && keywords[0][0] == 'difficulty')) return problems
+
   return problems.map(problem => {
     const relavanceReducer = (total, [key, value]) => {
       const singleKeyReducer = (total, v) => {
